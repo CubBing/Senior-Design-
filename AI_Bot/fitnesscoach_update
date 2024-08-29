@@ -50,43 +50,41 @@ def put_text_with_shadow(img, text, position, font_scale, color, shadow_color, t
     # Draw main text
     cv2.putText(img, text, position, cv2.FONT_HERSHEY_SIMPLEX, font_scale, color, thickness, cv2.LINE_AA)
 
-# Function to display the introduction screen with decorative elements
+# Function to display the introduction screen without border or oval
 def display_intro():
     global selected_workout
     selected_workout = None
 
-    # Create a black background image
-    intro_image = np.zeros((600, 800, 3), dtype=np.uint8)
+    # Load and resize the background image
+    background = cv2.imread('Fitness-Background.jpg')  
+    background = cv2.resize(background, (800, 600))
 
-    # Add a decorative border
-    border_color = (100, 100, 250)  # Light blue
-    cv2.rectangle(intro_image, (20, 20), (780, 580), border_color, 15)
-
-    # Draw a cute oval shape at the top
-    cv2.ellipse(intro_image, (400, 100), (200, 80), 0, 0, 360, (255, 192, 203), -1)  # Light pink oval
+    # Apply a fading effect to the background image
+    alpha = 0.3  # Transparency factor (0.0 to 1.0)
+    faded_background = cv2.addWeighted(background, alpha, background, 1 - alpha, 0)
 
     # Display welcome text with shadow
-    put_text_with_shadow(intro_image, 'Welcome to AI Fitness Coach', (90, 150), 1.5, (255, 255, 255), (0, 0, 0), 3)
+    put_text_with_shadow(faded_background, 'Welcome to AI Fitness Coach', (90, 150), 1.5, (255, 255, 255), (0, 0, 0), 3)
 
     # Display instruction text
-    put_text_with_shadow(intro_image, 'Please select the workout you wish to do:', (50, 250), 1, (255, 255, 255), (0, 0, 0), 2)
+    put_text_with_shadow(faded_background, 'Please select the workout you wish to do:', (50, 250), 1, (255, 255, 255), (0, 0, 0), 2)
 
     # Draw buttons with different colors and rounded corners
     button_color_curl = (144, 238, 144)  # Light green
     button_color_squat = (135, 206, 250)  # Light blue
-    cv2.rectangle(intro_image, (100, 400), (300, 450), button_color_curl, -1, cv2.LINE_AA)  # Rounded corners
-    cv2.rectangle(intro_image, (100, 500), (300, 550), button_color_squat, -1, cv2.LINE_AA)
+    cv2.rectangle(faded_background, (100, 400), (300, 450), button_color_curl, -1, cv2.LINE_AA)  # Rounded corners
+    cv2.rectangle(faded_background, (100, 500), (300, 550), button_color_squat, -1, cv2.LINE_AA)
 
     # Display button text
-    put_text_with_shadow(intro_image, 'Bicep Curl', (130, 430), 0.8, (0, 0, 0), (255, 255, 255), 2)
-    put_text_with_shadow(intro_image, 'Squat', (180, 530), 0.8, (0, 0, 0), (255, 255, 255), 2)
+    put_text_with_shadow(faded_background, 'Bicep Curl', (130, 430), 0.8, (0, 0, 0), (255, 255, 255), 2)
+    put_text_with_shadow(faded_background, 'Squat', (180, 530), 0.8, (0, 0, 0), (255, 255, 255), 2)
 
     # Set up the OpenCV window
     cv2.namedWindow('Introduction')
     cv2.setMouseCallback('Introduction', select_workout)
 
     while selected_workout is None:
-        cv2.imshow('Introduction', intro_image)
+        cv2.imshow('Introduction', faded_background)
         if cv2.waitKey(10) & 0xFF == ord('q'):
             break
 
