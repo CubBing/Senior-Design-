@@ -1,4 +1,4 @@
-# Senior-Design-
+# Senior-Design
 AI Fitness Coach
 
 Welcome to our senior design project.
