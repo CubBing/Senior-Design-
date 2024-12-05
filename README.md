@@ -1,12 +1,6 @@
 # Senior-Design
 AI Fitness Coach
 
-Welcome to our senior design project.
-We are currently in the process of developing an AI fitness coach.
-
-As of right now these are the functionalities of our AI fitness coach: 
-User selects which workout to choose, squat, curl, or pushups -------- pushups has not fully been implemented yet
-Using OpenCV and MediaPipe, we are able to use a camera to detect and skeletonize the human body
-With the skeleton, we are able to calculate the angles of specifc landmarks and with the angle we also use this to count the repetiton of select workout. 
+Many in today’s society approach exercise as an infinite revolving door of low motivation and confusion. We’d like to help them find a way out. Our AI Fitness Coach works to make exercise convenient, understandable, and cool! We’d like to help those who neglect exercise because they either don’t know what to do or are too afraid to start. Our AI model counts repetitions of exercises from our users and even displays text that tells users how to modify their technique to ensure safe and consistent movements. Our project also features a companion app that teaches users about each of our 5 offered exercises: pushups, bicep curls, overhead arm presses, squats, and lunges. It also allows users to enter personal information about themselves like height and weight and offers a calendar feature where users can track and plan workouts. Our project encourages regular exercise and healthier habits, reducing the risk of chronic illnesses like obesity, heart disease, and diabetes. It also makes fitness guidance available to individuals who may lack access to personal trainers or healthcare professionals, removing financial barriers to personal coaching. Our project ensures injury prevention and promotes physical movement which has been linked to better mental health, reduced stress, and lessening depression. It can also be adapted for people of all abilities and fitness levels, ensuring that everyone benefits.
 
 https://youtu.be/JMCy-XwsBy4 ---- demo 1 (4/28/24)
